@@ -1,0 +1,9 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  email_address: admin@example.com
+  password_hash: $2a$10$b/.VwulKM1kwqtd0V.WO7uQ2POdCxBNpf8IXEAfFIEfOebh.EuWbu # test
+  password_salt: $2a$10$b/.VwulKM1kwqtd0V.WO7u
+  language: English
+  balance: 0.00
+  user_type: Admin

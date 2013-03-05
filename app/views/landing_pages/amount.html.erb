@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<page version="1.0">
+  <div>
+    <%= @message %><br/>
+  </div>
+<div protocol="ussd">
+    <input navigationId="form" title="<%= @h['TRANSFER_AMOUNT']%>" name="amount"/>
+    <input navigationId="form" title="phone no" name="phone_number_to" value="<%= @phone_number_to %>" type="hidden"/><br/>
+
+</div>
+    <navigation id="form" protocol="ussd">
+    <link pageId="transfer.xml?ssid=<%= @sess_id %>"></link>
+    </navigation>
+
+
+
+
+</page>
+

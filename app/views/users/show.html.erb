@@ -1,0 +1,38 @@
+<h1>Show User</h1>
+  <p><%= label_tag :email_address %>: <%= @user.email_address %></p>
+  <p><%= label_tag :surname %>: <%= @user.surname %></p>
+  <p><%= label_tag :first_name %>: <%= @user.first_name %></p>
+  <p><%= label_tag :second_name %>: <%= @user.second_name %></p>
+  <p><%= label_tag :language %>: <%= @user.language %></p>
+  <p><%= label_tag :account %>: <%= @user.account.id %></p>
+  <p><%= label_tag :account_type %>: <%= @user.account.account_type %></p>
+  <p><%= label_tag :account_name %>: <%= @user.account.name %></p>
+  <p><%= label_tag :account_country %>: <%= @user.account.country.name %></p>
+  <% if (@current_user.role.code<200 || @current_user.company_id==@user.company.id) %>  
+     <p><%= label_tag :balance %>: <%= number_to_currency(@user.account.balance, :unit => '') %></p>
+  <% else %>
+     <p><%= label_tag :balance %>: NA</p>
+  <% end %> 
+  
+  <p><%= label_tag :role %>: <%= @user.role.name %></p>
+  <p><%= label_tag :country %>: <%= @user.country.name %></p>
+  <p><%= label_tag :company %>: <%= @user.company.name %></p>
+  <p><%= label_tag :village %>: <%= @user.village %></p>
+  <p><%= label_tag :district %>: <%= @user.district %></p>
+  <p><%= label_tag :buyer_group %>: <%= @user.buyer_group %></p>
+  <p><%= label_tag :voter_id %>: <%= @user.voter_id %></p>
+  <p><%= label_tag :picture %>: <%= image_tag @user.avatar.url(:medium) %></p>
+ 
+  <% @user.user_phones.each do |p| %>
+     <p><%= label_tag "User Phone" %>: <%= p.phone_number %> <%= link_to 'delete', [@user,p], :method => :delete, :confirm => "Are you sure?" %></p>
+  <% end %>
+  
+  
+  <%= render :partial => 'user_phones' %>
+  
+  <br/>
+  <%= render :partial => 'admin/admin_link' %> | <%= link_to 'Edit', edit_user_url(@user) %> | <%= link_to 'Show All', admin_users_url %> |  <%= link_to 'New', new_user_url %>
+
+<%- content_for(:js_files) do %>
+<%= javascript_include_tag "application" %>
+<% end %>

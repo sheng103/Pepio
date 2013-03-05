@@ -1,0 +1,24 @@
+<b>DASHBOARD</b>
+
+<p>Total number of users: <%= @user_count%></p>
+<p>Total number of transactions: <%= @trans_count %></p>
+<p>Average transaction amount: <%= number_to_currency(@trans_sum,:unit => '') %></p>
+<p>Total user balance: <%= number_to_currency(@balance, :unit => '') %></p>
+
+
+<b>MENU</b>
+<ul>
+  <% if @current_user.role.code<300 %>
+  <li><%= link_to 'Countries', countries_url %></li>
+  <li><%= link_to 'Companies', companies_url %></li>
+  <li><%= link_to 'Accounts', accounts_url %></li>
+  <% end %>
+  <li><%= link_to 'Users', admin_users_url %></li>
+  <li><%= link_to 'Transactions', admin_transactions_url %></li>
+  <% if @current_user.role.code<300 %>
+  <li><%= link_to 'Roles', roles_url %></li>
+  <li><%= link_to 'Languages', languages_url %></li>
+  <li><%= link_to 'Issue e-money', admin_issue_emoney_url %></li>
+  <li><%= link_to 'Cancel e-money', admin_cancel_emoney_url %></li>
+  <% end %>
+  </ul>

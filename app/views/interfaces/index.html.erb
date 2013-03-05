@@ -1,0 +1,34 @@
+<h1>Interface Element List</h1>
+
+<table id="interfaces">
+  <thead>
+    <th>Screen</th>
+    <th>Element</th>
+    <th>Language</th>
+    <th>Text</th>
+    <th>Deleted?</th>
+    <th>Actions</th>
+  </thead>
+  <tbody>
+    <% @interfaces.each do |i| %>
+      <tr>
+        <td><%= i.screen  %></td>
+        <td><%= i.element %></td>
+        <td><%= i.language%></td>
+        <td><%= i.text    %></td>
+        <td><%= i.deleted %></td>
+        <td>
+            <%= link_to 'Edit', edit_interface_url(i) %> |
+            <%= link_to 'Delete', delete_interface_url(i), :method => :post %>
+            <%#= link_to 'Delete', interface_url(i), :method => :delete, :confirm => "Are you sure?" %> 
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br/><%= render :partial => 'admin/admin_link' %> | <%= link_to 'New', new_interface_url %>
+
+<%- content_for(:js_files) do %>
+<%= javascript_include_tag "application" %>
+<% end %>

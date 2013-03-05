@@ -1,0 +1,47 @@
+
+<script>
+function test() {
+    if (document.getElementById('user_role_id').value == '3') {
+        document.getElementById('user_company_id').style.display = 'block';
+    } else {
+        document.getElementById('user_company_id').style.display = 'none';
+    }
+}
+
+</script>
+
+<%= form_for @user,  :html => { :multipart => true } do |f| %>
+  <% if @user.errors.any? %>  
+  <div id="errorExplanation">  
+    <h2><%= pluralize(@user.errors.count, "error") %> prohibited this user from being saved:</h2>  
+    <ul>  
+    <% @user.errors.full_messages.each do |msg| %>  
+      <li><%= msg %></li>  
+    <% end %>  
+    </ul>  
+  </div>  
+  <% end %>  
+  <p><%= f.label :email %><%= f.text_field :email_address %></p>
+  <% if controller.action_name == 'new' || controller.action_name == 'create' %>
+  <p><%= label_tag :phone_number %><%= text_field_tag :phone_number %></p>
+  <% end %>
+  <p><%= f.label :surname %><%= f.text_field :surname %></p>
+  <p><%= f.label :first_name %><%= f.text_field :first_name %></p>
+  <p><%= f.label :second_name %><%= f.text_field :second_name %></p>
+  <p><%= f.label :language %><%= collection_select(:user, :language, Language.all, :name, :name) %></p>
+  <p><%= f.label :role_id %><%= collection_select(:user, :role_id, Role.find( :all, :conditions => ["code > ?", @current_user.role.code]), :id, :name, {:prompt => true}, {:onclick => 'test()'}) %></p>
+  <p><%= label_tag :company_id %><%= collection_select(:user, :company_id, Company.find( :all, :conditions => [" (country_id = ? OR 1 = ?)", @current_user.country_id, @current_user.role.code]), :id, :name, {:prompt => true}, {:style => "display: none"} )  %></p>
+  <p><%= f.label :country_id %><%= collection_select(:user, :country_id, Country.find( :all, :conditions => [" (id = ? OR 1 = ?)", @current_user.country_id, @current_user.role.code]), :id, :name, :prompt => false) %></p>
+  <p><%= f.label :village %><%= f.text_field :village %></p>
+  <p><%= f.label :district %><%= f.text_field :district %></p>
+  <p><%= f.label :buyer_group %><%= f.text_field :buyer_group %></p>
+  <p><%= f.label :voter_id %><%= f.text_field :voter_id %></p>
+  <p><%= f.label :password %><%= f.password_field :password %></p>
+  <p><%= f.label :password_confirmation %><%= f.password_field :password_confirmation %>
+  <p><%= f.label :deleted %><%= f.check_box :deleted %></p>
+  <p><%= f.label :picture %><%= f.file_field :avatar %></p>
+  <p><%= f.submit %></p>
+<% end %>
+
+  <br/>
+  <%= render :partial => 'admin/admin_link' %> | <%= link_to 'Show All', admin_users_url %> |  <%= link_to 'New', new_user_url %>

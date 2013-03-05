@@ -1,0 +1,16 @@
+<h1>Issue e-money</h1>
+
+  <div>
+    <%= @message %><br/>
+  </div>
+<br>
+<%= form_tag(:controller => 'admin', :action => 'issue_emoney', :method => :post) do |f| %>
+<input id="hdn" name="hdn" value="1" type="hidden" />
+<p><%= label_tag :phone_number %><%= text_field_tag :phone_number_to %></p>
+<p><%= label_tag :amount %><%= text_field_tag :amount %></p>
+<p><%= submit_tag 'Send' %></p>
+
+
+<br/>
+<%= render :partial => 'admin/admin_link' %>
+<% end %>

@@ -1,0 +1,10 @@
+interfaces#show
+
+<p><%= label_tag :screen %>: <%= @interface.screen %></p>
+<p><%= label_tag :element %>: <%= @interface.element %></p>
+<p><%= label_tag :language %>: <%= @interface.language %></p>
+<p><%= label_tag :text %>: <%= @interface.text %></p>
+<p><%= label_tag :deleted %>: <%= @interface.deleted%></p>
+
+<%= render :partial => 'admin/admin_link' %> | 
+<%= link_to 'Back', interfaces_path %> | <%= link_to 'Edit', edit_interface_url(@interface) %>  | <%= link_to 'New', new_interface_url %>

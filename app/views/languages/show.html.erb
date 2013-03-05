@@ -1,0 +1,9 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Name:</b>
+  <%= @language.name %>
+</p>
+
+
+<%= render :partial => 'admin/admin_link' %> | <%= link_to 'Edit', edit_language_path(@language) %> | <%= link_to 'Back', languages_path %> | <%= link_to 'New Language', new_language_path %>

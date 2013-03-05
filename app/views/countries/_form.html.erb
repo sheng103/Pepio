@@ -1,0 +1,9 @@
+<%= form_for @country do |f| %>
+  <%#= f.error_messages %>
+  <p><%= f.label :name %><%= f.text_field :name%></p>
+  <p><%= f.label :code %><%= f.text_field :code%></p>
+  <p><%= f.label :deleted %><%= f.check_box :deleted %></p>
+  <p><%= f.submit %></p>
+<% end %>
+
+<%= render :partial => 'admin/admin_link' %> 

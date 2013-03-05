@@ -1,0 +1,30 @@
+<h1>Country List</h1>
+
+<table id="countries">
+  <thead>
+    <th>Name</th>
+    <th>Code</th>
+    <th>Deleted?</th>
+    <th>Actions</th>
+  </thead>
+  <tbody>
+    <% @countries.each do |i| %>
+      <tr>
+        <td><%= i.name  %></td>
+        <td><%= i.code  %></td>
+        <td><%= i.deleted %></td>
+        <td>
+            <%= link_to 'Edit', edit_country_url(i) %> |
+            <%= link_to 'Delete', delete_country_url(i), :method => :post %>
+            <%#= link_to 'Delete', country_url(i), :method => :delete, :confirm => "Are you sure?" %> 
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br/><%= render :partial => 'admin/admin_link' %> | <%= link_to 'New', new_country_url %>
+
+<%- content_for(:js_files) do %>
+<%= javascript_include_tag "application" %>
+<% end %>

@@ -1,0 +1,30 @@
+<h1>Company Element List</h1>
+
+<table id="companies">
+  <thead>
+    <th>Name</th>
+    <th>Country</th>
+    <th>Deleted?</th>
+    <th>Actions</th>
+  </thead>
+  <tbody>
+    <% @companies.each do |i| %>
+      <tr>
+        <td><%= i.name  %></td>
+        <td><%= i.country.name  %></td>
+        <td><%= i.deleted %></td>
+        <td>
+            <%= link_to 'Edit', edit_company_url(i) %> |
+            <%= link_to 'Delete', delete_company_url(i), :method => :post %>
+            <%#= link_to 'Delete', company_url(i), :method => :delete, :confirm => "Are you sure?" %> 
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br/><%= render :partial => 'admin/admin_link' %> | <%= link_to 'New', new_company_url %>
+
+<%- content_for(:js_files) do %>
+<%= javascript_include_tag "application" %>
+<% end %>

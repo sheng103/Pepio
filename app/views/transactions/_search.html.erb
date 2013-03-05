@@ -1,0 +1,13 @@
+<div id="search">
+<%= form_tag search_transactions_url do %>
+  <%= label_tag :date%><%= text_field_tag :date %>
+  <%= label_tag :debit%><%= text_field_tag :debit %>
+  <%= label_tag :credit%><%= text_field_tag :credit %>
+  <%= label_tag :type%><%= select_tag :type, options_for_select(['','transfer-from','transfer-to']) %>
+  <%= label_tag :user_id%><%= text_field_tag :user_id %>
+  <%= label_tag :phone_no%><%= text_field_tag :phone_no %>
+  <%= label_tag :counter_user_id%><%= text_field_tag :counter_user_id %>
+  <%= label_tag :counter_phone_no%><%= text_field_tag :counter_phone_no %>
+  <%= submit_tag 'Search'%>
+<% end %>
+</div>

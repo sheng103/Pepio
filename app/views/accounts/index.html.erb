@@ -1,0 +1,38 @@
+<h1>Account List</h1>
+
+<table id="accounts">
+  <thead>
+    <th>ID</th> 
+    <th>Name</th>
+    <th>Type</th>
+    <th>Country</th>
+    <th>Company</th>    
+    <th>Balance</th>
+    <th>Deleted?</th>
+    <th>Actions</th>
+  </thead>
+  <tbody>
+    <% @accounts.each do |i| %>
+      <tr>
+        <td><%= i.id  %></td>
+        <td><%= i.name  %></td>
+        <td><%= i.account_type  %></td>
+        <td><%= i.country.name  %></td>
+        <td><%= i.company.name  %></td>
+        <td align="right"><%= number_to_currency(i.balance, :unit => '')  %></td>
+        <td><%= i.deleted %></td>
+        <td>
+            <%= link_to 'Edit', edit_account_url(i) %> |
+            <%= link_to 'Delete', delete_account_url(i), :method => :post %>
+            <%#= link_to 'Delete', account_url(i), :method => :delete, :confirm => "Are you sure?" %> 
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br/><%= render :partial => 'admin/admin_link' %> | <%= link_to 'New', new_account_url %>
+
+<%- content_for(:js_files) do %>
+<%= javascript_include_tag "application" %>
+<% end %>

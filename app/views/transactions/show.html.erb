@@ -1,0 +1,16 @@
+<h1>Show Transaction</h1>
+
+<p><%= label_tag :debit %>: <%= number_to_currency(@transaction.debit, :unit => '') %></p>
+<p><%= label_tag :credit %>: <%= number_to_currency(@transaction.credit,:unit => '') %></p>
+<p><%= label_tag :transaction_type %>: <%= @transaction.transaction_type %></p>
+<p><%= label_tag :user_id %>: <%= @transaction.user_id %></p>
+<p><%= label_tag :phone_number %>: <%= @transaction.phone_number %></p>
+<p><%= label_tag :counter_user_id %>: <%= @transaction.counter_user_id %></p>
+<p><%= label_tag :counter_phone_number %>: <%= @transaction.counter_phone_number %></p>
+<p><%= label_tag :created_at %>: <%= @transaction.created_at %></p>
+<p><%= label_tag :created_by %>: <%= @transaction.created_by_user %></p>
+<p><%= label_tag :updated_at %>: <%= @transaction.updated_at %></p>
+<p><%= label_tag :updated_by %>: <%= @transaction.updated_by_user %></p>
+<p><%= label_tag :deleted %>: <%= @transaction.deleted %></p>
+
+<%= link_to 'Edit', edit_transaction_url(@transaction) %> <%= link_to 'Back', admin_transactions_url%>

@@ -1,0 +1,14 @@
+<h1>Welcome to SlickMoney</h1>
+<p>Please login below.</p>  
+  
+<%= form_tag sessions_path do %>  
+  <p>  
+    <%= label_tag :phone_number %><br />  
+    <%= text_field_tag :phone_number, params[:phone_number] %>  
+  </p>  
+  <p>  
+    <%= label_tag :password %><br />  
+    <%= password_field_tag :password %>  
+  </p>  
+  <p><%= submit_tag 'Login' %></p>  
+<% end %>  

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+<!--   <title><%= controller.controller_name %></title> -->
+<title>SlickMoney</title>
+<%= stylesheet_link_tag "application" %>
+  
+  <%= csrf_meta_tags %>
+</head>
+<body>
+
+<div>
+
+  <% if @current_user %>
+    Logged in as <%= @current_user.first_name %> <%= @current_user.surname%> (<%= @current_user.email_address%>) | 
+    <%= link_to "Log out", logout_path %>
+  <% else %>
+<!--     <%#= link_to "Sign up", signup_path %> -->
+<!--     <%= link_to "Log in", login_path %> -->
+<!--     <% if !admin_user %> -->
+<!--       or -->
+<!-- <%= link_to 'Log in as admin', admin_login_path %> -->
+<!--     <% end %> -->
+  <% end %>
+</div>
+
+<p class="notice"><%= flash[:notice] %></p>
+<p class="alert"><%= flash[:error] %></p>
+
+<%= yield %>
+<%= yield(:js_files) %>
+</body>
+</html>

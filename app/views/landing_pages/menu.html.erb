@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<page version="1.0">
+<title><%= @h['MENU_GREETING'] %></title>
+<div>
+<br/>
+</div>
+<navigation>
+    <link accesskey="1" pageId="balance.xml?ssid=<%= @sess_id %>"><%= @h['MENU_ITEM1'] %></link>
+    <link accesskey="2" pageId="transfer.xml?ssid=<%= @sess_id %>"><%= @h['MENU_ITEM2'] %></link>
+    <link accesskey="3" pageId="password.xml?ssid=<%= @sess_id %>"><%= @h['MENU_ITEM3'] %></link>
+  <% if (session[:role_code] < 0) %>
+    <link accesskey="4" pageId="cashin.xml?ssid=<%= @sess_id %>"><%= @h['MENU_ITEM4'] %></link>
+  <% end %>  
+</navigation>
+</page>

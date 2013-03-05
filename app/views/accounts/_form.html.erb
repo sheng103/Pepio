@@ -1,0 +1,12 @@
+<%= form_for @account do |f| %>
+  <%#= f.error_messages %>
+  <p><%= f.label :name %><%= f.text_field :name%></p>
+  <p><%= f.label :account_type %><%= select(:account, :account_type, {"User" => "User","Company" => "Company","SM CashOut" => "SM CashOut","SM Operating" => "SM Operating","SM Commissions" => "SM Commissions"}) %></p>
+  <p><%= f.label :country_id %><%= collection_select(:account, :country_id, Country.find( :all, :conditions => [" (id = ? OR 1 = ?)", @current_user.country_id, @current_user.role.code]), :id, :name, :prompt => true) %></p>
+  <p><%= f.label :company_id %><%= collection_select(:account, :company_id, Company.all, :id, :name, :prompt => true) %></p>
+  <p><%= f.label :balance %><%= f.text_field :balance%></p>
+  <p><%= f.label :deleted %><%= f.check_box :deleted %></p>
+  <p><%= f.submit %></p>
+<% end %>
+
+<%= render :partial => 'admin/admin_link' %> 

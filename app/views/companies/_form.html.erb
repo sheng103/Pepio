@@ -1,0 +1,9 @@
+<%= form_for @company do |f| %>
+  <%#= f.error_messages %>
+  <p><%= f.label :name %><%= f.text_field :name%></p>
+  <p><%= f.label :country_id %><%= collection_select(:company, :country_id, Country.find( :all, :conditions => [" (id = ? OR 1 = ?)", @current_user.country_id, @current_user.role.code]), :id, :name, :prompt => true) %></p>
+  <p><%= f.label :deleted %><%= f.check_box :deleted %></p>
+  <p><%= f.submit %></p>
+<% end %>
+
+<%= link_to 'Show all', companies_path %> | <%= render :partial => 'admin/admin_link' %> 

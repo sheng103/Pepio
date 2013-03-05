@@ -1,0 +1,53 @@
+<h1>Search Results</h1>
+<%= render :partial => 'transactions/search'%>
+<TABLE ALIGN=CENTER BORDER=0 CELLSPACING=0 CELLPADDING=1 BGCOLOR=#AAAAAA>
+           <TR>
+           <TD>
+<table id="transactions">
+  <thead>
+    <th>Debit</th>
+    <th>Credit</th>
+    <th>Type</th>
+    <th>User</th>
+    <th>Phone No</th>
+    <th>Counter User ID</th>
+    <th>Counter Phone No</th>
+    <th>Created At</th>
+    <th>Created By</th>
+    <th>Updated At</th>
+    <th>Updated By</th>
+<th>Deleted?</th>
+<th>Actions</th>
+  </thead>
+  <tbody>
+    <% @transactions.each do |t| %>
+    <tr>
+      <td><%= number_to_currency(t.debit, :unit => '') %></td>
+      <td><%= number_to_currency(t.credit,:unit => '') %></td>
+      <td><%= t.transaction_type %></td>
+      <td><%= t.user_id %></td>
+      <td><%= t.phone_number %></td>
+      <td><%= t.counter_user_id %></td>
+      <td><%= t.counter_phone_number %></td>
+      <td><%= t.created_at %></td>
+      <td><%= t.created_by_user %></td>
+      <td><%= t.updated_at %></td>
+      <td><%= t.updated_by_user %></td>
+      <td><%= t.deleted %></td>
+      <td>
+        <%= link_to 'Edit', edit_transaction_url(t) %>
+        <%#= link_to 'Delete' %>
+      </td>
+    </tr>
+    <% end %>
+  </tbody>
+</table>
+           </TD>
+           </TR>
+ </TABLE>
+
+<br/><%= render :partial => 'admin/admin_link' %>
+
+<%- content_for(:js_files) do %>
+<%= javascript_include_tag "application" %>
+<% end %>

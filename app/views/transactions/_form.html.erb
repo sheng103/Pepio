@@ -1,0 +1,23 @@
+<%= form_for @transaction do |f| %>
+  <% if @transaction.errors.any? %>  
+  <div id="errorExplanation">  
+    <h2><%= pluralize(@transaction.errors.count, "error") %> prohibited this transaction from being saved:</h2>  
+    <ul>  
+    <% @transaction.errors.full_messages.each do |msg| %>  
+      <li><%= msg %></li>  
+    <% end %>  
+    </ul>  
+  </div>  
+  <% end %>
+  <p><%= f.label :debit %><%= f.text_field :debit%></p>
+  <p><%= f.label :credit %><%= f.text_field :credit%></p>
+  <p><%= f.label :transaction_type %><%= f.text_field :transaction_type%></p>
+  <p><%= f.label :user_id %><%= f.text_field :user_id%></p>
+  <p><%= f.label :phone_number %><%= f.text_field :phone_number%></p>
+  <p><%= f.label :counter_user_id %><%= f.text_field :counter_user_id %></p>
+  <p><%= f.label :counter_phone_number %><%= f.text_field :counter_phone_number %></p>
+  <p><%= f.label :Deleted %><%= f.check_box :deleted %></p>
+  <p><%= f.submit %></p>
+<% end %>
+
+<br/><%= render :partial => 'admin/admin_link' %> 

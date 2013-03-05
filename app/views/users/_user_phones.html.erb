@@ -1,0 +1,5 @@
+<%= form_tag user_user_phones_url(@user) do %>
+<%# hidden_field_tag :user_id, @user.id %>
+<p><%= label_tag :phone_number %> <%= text_field_tag :phone_number %></p>
+<%= submit_tag "Add Phone Number" %>
+<% end %>

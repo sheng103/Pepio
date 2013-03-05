@@ -1,0 +1,7 @@
+countries#show
+
+<p><%= label_tag :name %>: <%= @country.name %></p>
+<p><%= label_tag :deleted %>: <%= @country.deleted%></p>
+
+<%= render :partial => 'admin/admin_link' %> | 
+<%= link_to 'Back', countries_path %> | <%= link_to 'Edit', edit_country_url(@country) %>  | <%= link_to 'New', new_country_url %>

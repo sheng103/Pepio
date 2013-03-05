@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<page version="1.0">
+  <div>
+    <%= @message %><br/>
+  </div>
+
+<div>
+<%= @h['BALANCE_BALANCE'] %>: <%=@balance%>
+</div>
+<navigation>
+    <link accesskey="1" pageId="index.xml?ssid=<%= @sess_id %>"><%= @h['BALANCE_BACK'] %></link>
+</navigation>
+</page>

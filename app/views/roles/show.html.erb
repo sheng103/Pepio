@@ -1,0 +1,11 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Name:</b>
+  <%= @role.name %>
+</p>
+
+<%= render :partial => 'admin/admin_link' %> | 
+<%= link_to 'Back', roles_path %> | <%= link_to 'Edit', edit_role_url(@role) %>  | <%= link_to 'New', new_role_url %>
+
+

@@ -1,0 +1,92 @@
+<h1>User List</h1>
+
+
+<TABLE ALIGN=CENTER BORDER=0 CELLSPACING=0 CELLPADDING=1 BGCOLOR=#AAAAAA>
+           <TR>
+           <TD>
+
+<table id="users">
+    <thead>
+      <th>Pic</th>
+      <th>ID</th>
+      <th>Email Address</th>
+      <th>Surname</th>
+      <th>First Name</th>
+      <th>Second Name</th>
+	  <th>Phone No</th>
+      <th>Language</th>
+      <th>Account</th>
+      <th>Acc Type</th>
+      <th>AccCtr</th>
+      <th>Balance</th>
+      <th>Role</th>
+      <th>Country</th>
+      <th>Company</th>
+      <th>Village</th>
+      <th>Voter_id</th>
+      <% if @current_user.role.code<300 %>  
+      <th>Deleted?</th>
+      <% end %>
+      <th>Created By</th>
+      <th>Created At</th>
+      <th>Updated By</th>
+      <th>Updated At</th>
+      <th>Actions</th>
+      </thead>
+    <tbody>
+      <% @users.each do |u| %>
+      <tr>
+        <td align=center><%= link_to image_tag(u.avatar.url(:mini)), user_url(u) %></td>
+        <td><%= u.id %></td>
+        <td><%= u.email_address %></td>
+        <td><%= u.surname %></td>
+        <td><%= u.first_name %></td>
+        <td><%= u.second_name %></td>
+        <td>
+            <% u.phone_numbers.each do |p| %>
+                <%= p.phone_number %><br/>
+            <% end %>
+        </td>
+        <td><%= u.language %></td>
+        <td><%= link_to u.account.id, account_url(u.account.id) %></td>
+        <td><%= u.account.account_type %></td>
+        <td><%= u.account.country.code %></td>
+      <% if (@current_user.role.code<200 || @current_user.company_id==u.company.id) %>  
+        <td><%= number_to_currency(u.account.balance, :unit => '') %></td>
+      <% else %>
+        <td>NA</td>
+      <% end %>
+        
+        <td><%= u.role.name %></td>
+        <td><%= u.country.name %></td>
+        <td><%= u.company.name %></td>
+        <td><%= u.village %></td>
+        <td><%= u.voter_id %></td>
+      <% if @current_user.role.code<300 %>  
+        <td><%= u.deleted %></td>
+      <% end %>
+       <td><%= u.created_by_user %></td>
+        <td><%= u.created_at %></td>
+        <td><%= u.updated_by_user %></td>
+        <td><%= u.updated_at %></td>
+        <td>
+      <% if @current_user.role.code<u.role.code %>  
+            <%= link_to 'Show', user_url(u) %> |
+            <%= link_to 'Edit', edit_user_url(u) %> | <%= link_to 'delete',delete_user_url(u), :confirm => "Are you sure?" %></p>
+      <% end %>
+        </td>
+      </tr>
+      <% end %>
+    </tbody>
+</table>
+           </TD>
+           </TR>
+ </TABLE>
+
+
+<br/>
+<%= render :partial => 'admin/admin_link' %> | <%= link_to 'New', new_user_url %>
+
+<%- content_for(:js_files) do %>
+<%= javascript_include_tag "application" %>
+<% end %>

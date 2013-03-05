@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<page version="1.0">
+  <div>
+    <%= @message %><br/>
+  </div>
+<div protocol="ussd">
+    <input navigationId="form" title="<%= @h['CASHIN_TOPHONE'] %>" name="phone_number_to"/>
+</div>
+    <navigation id="form" protocol="ussd">
+    <link pageId="cashin.xml?ssid=<%= @sess_id %>"></link>
+    </navigation>
+
+
+
+
+</page>
+

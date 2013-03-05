@@ -1,0 +1,11 @@
+<%= form_for @interface do |f| %>
+  <%#= f.error_messages %>
+  <p><%= f.label :screen %><%= f.text_field :screen%></p>
+  <p><%= f.label :element %><%= f.text_field :element%></p>
+  <p><%= f.label :language %><%=collection_select(:interface, :language, Language.all, :name, :name)  %></p>
+  <p><%= f.label :text %><%= f.text_area :text%></p>
+  <p><%= f.label :deleted %><%= f.check_box :deleted %></p>
+  <p><%= f.submit %></p>
+<% end %>
+
+<%= render :partial => 'admin/admin_link' %> 

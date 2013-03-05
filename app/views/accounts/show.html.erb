@@ -1,0 +1,11 @@
+accounts#show
+
+<p><%= label_tag :name %>: <%= @account.name %></p>
+<p><%= label_tag :account_type %>: <%= @account.account_type %></p>
+<p><%= label_tag :country %>: <%= @account.country.name %></p>
+<p><%= label_tag :company %>: <%= @account.company.name %></p>
+<p><%= label_tag :balance %>: <%= number_to_currency(@account.balance, :unit => '') %></p>
+<p><%= label_tag :deleted %>: <%= @account.deleted%></p>
+
+<%= render :partial => 'admin/admin_link' %> | 
+<%= link_to 'Back', accounts_path %> | <%= link_to 'Edit', edit_account_url(@account) %>  | <%= link_to 'New', new_account_url %>

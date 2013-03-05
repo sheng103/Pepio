@@ -1,0 +1,6 @@
+
+<p><%= label_tag :name %>: <%= @company.name %></p>
+<p><%= label_tag :deleted %>: <%= @company.deleted%></p>
+
+<%= render :partial => 'admin/admin_link' %> | 
+<%= link_to 'Show all', companies_path %> | <%= link_to 'Edit', edit_company_url(@company) %>  | <%= link_to 'New', new_company_url %>
