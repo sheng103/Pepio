@@ -5,3 +5,6 @@
 require File.expand_path('../config/application', __FILE__)
 
 Smmoney::Application.load_tasks
+
+
+

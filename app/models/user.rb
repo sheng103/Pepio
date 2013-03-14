@@ -1,5 +1,5 @@
 class User < ActiveRecord::Base
-  attr_accessor :password
+  attr_accessor :password, :avatar
   before_save :encrypt_password
   
   belongs_to :country
@@ -8,13 +8,14 @@ class User < ActiveRecord::Base
   belongs_to :account
   belongs_to :company
   has_attached_file :avatar, :styles => { :medium => "300x300>", :thumb => "100x100>", :mini => '50x50' }
-
   
   validates_confirmation_of :password
   validates_presence_of :password, :on => :create
   validates_presence_of :country, :first_name, :surname, :role 
   #validates_presence_of :email_address
   #validates_uniqueness_of :email_address
+  validates :gender, :length => { :maximum => 10 }
+  validates :shopkepper, :length => { :maximum => 10 }
   
   def self.authenticate(phone_number, password)  
     phone = UserPhone.find_by_phone_number(phone_number)

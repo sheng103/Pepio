@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120913153552) do
+ActiveRecord::Schema.define(:version => 20130306145202) do
 
   create_table "accounts", :force => true do |t|
     t.string   "account_type",       :limit => 30
@@ -141,30 +141,34 @@ ActiveRecord::Schema.define(:version => 20120913153552) do
   end
 
   create_table "users", :force => true do |t|
-    t.string   "email_address",       :limit => 30,                    :null => false
-    t.string   "surname",             :limit => 20
-    t.string   "first_name",          :limit => 20
-    t.string   "second_name",         :limit => 20
-    t.string   "language",            :limit => 20
-    t.boolean  "deleted",                           :default => false
+    t.string   "email_address",      :limit => 30,                    :null => false
+    t.string   "surname",            :limit => 20
+    t.string   "first_name",         :limit => 20
+    t.string   "second_name",        :limit => 20
+    t.string   "language",           :limit => 20
+    t.boolean  "deleted",                          :default => false
     t.integer  "created_by_user_id"
     t.integer  "updated_by_user_id"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "password_hash"
     t.string   "password_salt"
-    t.string   "village",             :limit => 50
-    t.string   "voter_id",            :limit => 50
-    t.string   "avatar_file_name"
-    t.string   "avatar_content_type"
-    t.integer  "avatar_file_size"
-    t.datetime "avatar_updated_at"
+    t.string   "village",            :limit => 50
+    t.string   "voter_id",           :limit => 50
     t.integer  "country_id"
     t.integer  "role_id"
     t.integer  "company_id"
     t.integer  "account_id"
-    t.string   "district",            :limit => 50
-    t.string   "buyer_group",         :limit => 50
+    t.string   "district",           :limit => 50
+    t.string   "buyer_group",        :limit => 50
+    t.string   "gender"
+    t.string   "shopkepper"
+    
+    t.decimal  "balance",                           :precision => 10, :scale => 2, :default => 0.0,   :null => false
+    t.string   "avatar_file_name"
+    t.string   "avatar_content_type"
+    t.integer  "avatar_file_size"
+    t.datetime "avatar_updated_at"
   end
 
   create_table "users1", :force => true do |t|

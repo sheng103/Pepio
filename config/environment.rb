@@ -17,5 +17,9 @@ $country_code['1'] = '256'
 #Tanzania
 $country_code['2'] = '255'
 
+
+
 # Initialize the rails application
 Smmoney::Application.initialize!
+
+    

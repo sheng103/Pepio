@@ -4,12 +4,19 @@ gem 'rails', '3.1.11'
 #gem 'newrelic_rpm'
 # Bundle edge Rails instead:
 # gem 'rails',     :git => 'git://github.com/rails/rails.git'
-gem "rake", "0.8.7"
+gem "rake", "10.0.3"
 gem 'mysql'
 gem 'bcrypt-ruby', :require => 'bcrypt'
 gem 'builder'
 gem 'httparty'
+
 gem "paperclip", "~> 3.0"
+gem 'dropbox'
+gem 'paperclipdropbox'
+
+gem 'rubyzip', :require => 'zip/zip'
+gem "fileutils", "~> 0.7"
+gem "simple-spreadsheet"
 
 # Gems used only for assets and not required
 # in production environments by default.
@@ -20,6 +27,7 @@ group :assets do
 end
 
 gem 'jquery-rails'
+
 
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'
@@ -34,6 +42,7 @@ gem 'jquery-rails'
 # gem 'ruby-debug19', :require => 'ruby-debug'
 
 group :test do
-  # Pretty printed test output
-  gem 'turn', :require => false
+  gem "rspec-rails", ">= 2.0.1"
+  gem 'cucumber-rails'
+  gem 'database_cleaner'
 end
